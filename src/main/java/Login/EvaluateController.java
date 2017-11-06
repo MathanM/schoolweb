@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("evaluate")
 public class EvaluateController {
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://www.neetschools.aspiiresolutions.com")
     @RequestMapping(value = "", method = RequestMethod.POST)
     public @ResponseBody
     String evaluateAnswers(@RequestBody List<QueData> ans) {
@@ -29,7 +29,7 @@ public class EvaluateController {
         return "";
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://www.neetschools.aspiiresolutions.com")
     @RequestMapping(value = "getQuestions", headers="Content-Type=application/json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     String getQuestions(@RequestBody EvaluateBean bean) {

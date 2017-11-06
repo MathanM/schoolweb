@@ -8,7 +8,7 @@ public class DBManager extends DriverManagerDataSource {
        dataSource.setUsername("root");
        dataSource.setPassword("");
        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-       dataSource.setUrl("jdbc:mysql://localhost:3306/dbmsschools");
+       dataSource.setUrl("jdbc:mysql://145.239.227.138:3306/wwwaspii_neetschools");
        return dataSource;
    }
 }

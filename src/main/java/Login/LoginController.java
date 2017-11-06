@@ -12,7 +12,7 @@ import java.util.ArrayList;
 @RequestMapping("login")
 public class LoginController {
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://www.neetschools.aspiiresolutions.com")
     @RequestMapping(value = "", headers="Content-Type=application/json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     String userLogin(@RequestBody LoginBean user) {
@@ -29,7 +29,7 @@ public class LoginController {
         return "";
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://www.neetschools.aspiiresolutions.com")
     @RequestMapping(value = "/forgotPassword", headers="Content-Type=application/json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     String forgotPassword(@RequestBody LoginBean user) {
@@ -46,7 +46,7 @@ public class LoginController {
         return "";
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://www.neetschools.aspiiresolutions.com")
     @RequestMapping(value = "/updateUserDetails", headers="Content-Type=application/json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     String updateUserDetails(@RequestBody LoginBean user) {
@@ -63,7 +63,7 @@ public class LoginController {
         return "";
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://www.neetschools.aspiiresolutions.com")
     @RequestMapping(value = "/getChapters", headers="Content-Type=application/json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     String getChapters(@RequestBody int courseId) {
@@ -80,7 +80,7 @@ public class LoginController {
         return "";
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://www.neetschools.aspiiresolutions.com")
     @RequestMapping(value = "/ansMatching", headers="Content-Type=application/json", method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody
     String ansMatching(@RequestBody String ans) {
