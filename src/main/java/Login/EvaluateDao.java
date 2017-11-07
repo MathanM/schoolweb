@@ -1,5 +1,6 @@
 package Login;
 
+import Data.AssessData;
 import Data.QueData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jdk.nashorn.internal.parser.JSONParser;
@@ -89,5 +90,47 @@ public class EvaluateDao {
             }
         }
         return quesArray;
+    }
+
+    public List<AssessData> getAssessmentDao(int userData){
+        String sql ="SELECT * FROM ASSESSMENT_DETAILS WHERE COURSE_ID IN (SELECT COURSE_ID FROM COURSE_DETAILS WHERE USER_STD = ?)";
+        Connection conn = null;
+        DriverManagerDataSource dataSource;
+        DBManager dbManager =new DBManager();
+        List<AssessData> assessArray = new ArrayList<AssessData>();
+
+        //CONNECTION WITH MYSQL
+        dataSource = dbManager.getDataBaseSource();
+        try {
+            conn = dataSource.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, userData);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next() ) {
+                AssessData data = new AssessData();
+                data.setAssId(rs.getInt("ASSESSMENT_ID"));
+                data.setAssName(rs.getString("ASSESSMENT_NAME"));
+                data.setAssType(rs.getString("ASSESSMENT_TYPE"));
+                data.setAssStatus((rs.getString("ASSESSMENT_STATUS")));
+                data.setCreatedBy((rs.getString("CREATED_BY")));
+                data.setAssDuration((rs.getInt("ASSESSMENT_DURATION")));
+                data.setMarks(rs.getInt("TOTAL_MARKS"));
+                data.setChapId(rs.getInt("CHAPTER_ID"));
+                data.setCourId(rs.getInt("COURSE_ID"));
+                assessArray.add(data);
+            }
+            ps.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+
+        }finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+        return assessArray;
     }
 }
